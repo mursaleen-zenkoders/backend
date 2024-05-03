@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="p-6">
+    <form action="/create" method="post" class="flex flex-col gap-y-3">
+      <input
+        type="text"
+        name="title"
+        class="border-2 rounded-md px-3"
+        placeholder="Title"
+      />
+      <textarea
+        name="details"
+        class="border-2 rounded-md px-3"
+        placeholder="details"
+      ></textarea>
+      <input type="submit" class="border-2 rounded-md text-start px-3" />
+    </form>
+
+    <div class="flex gap-3 py-6">
+      <% if(data.length > 0){ %> <% data.forEach((val)=>{ %>
+      <div class="border-2 rounded-md min-w-[300px] p-3">
+        <h1 class="text-center text-lg"><%= val %></h1>
+        <a class="text-sm" href="/file/<%= val %>">Read More</a>
+      </div>
+      <% }) %> <% } else { %>
+      <p>NO POST YET</p>
+      <% } %>
+    </div>
+  </body>
+</html>
